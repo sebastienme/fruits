@@ -1,0 +1,15 @@
+.btn {
+    font-weight: 600;
+    border: 1px solid rgb(207, 207, 207);
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,189,113,1) 0%, rgba(255,136,0,1) 35%);
+    color: #fff;
+    border-radius: 8px;
+    height: 47px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .3s ease; 
+    width: fit-content;
+}

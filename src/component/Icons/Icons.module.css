@@ -1,0 +1,11 @@
+.icons {
+    height: 30px;
+    width: auto;
+}
+
+.search {
+    position: absolute;
+    height: 24px;
+    left: 12px;
+    pointer-events: none;
+}
