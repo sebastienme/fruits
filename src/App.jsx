@@ -1,11 +1,11 @@
+import { Outlet } from "react-router-dom";
 import Navbar from "./component/Nav/Navbar.jsx";
-import Welcome from "./component/Welcome/Welcome.jsx";
+
 const App = () => {
     return (
         <>
             <Navbar />
-            <Welcome />
-            {/* Faire les routes */}
+            <Outlet />
         </>
     )
 }

@@ -11,10 +11,10 @@ const Bag = () => {
     )
 }
 
-const Heart = () => {
+const Heart = ({ className }) => {
     return (
         <>
-            <img src={heart} className={styles.icons} alt="heart-icon" />
+            <img src={heart} className={`${styles.icons} ${className}`} alt="heart-icon" />
         </>
     )
 }

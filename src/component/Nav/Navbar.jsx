@@ -1,5 +1,6 @@
 import styles from './Navbar.module.css'
 import { Bag, Heart, Search } from '../Icons/Icons';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -8,8 +9,8 @@ const Navbar = () => {
                 <div className={styles.navleft}>
                     <div className={styles.brand}>fruits.</div>
                     <ul className={styles.navbarList}>
-                        <li><a href=''>Acceuil</a></li>
-                        <li><a href=''>Magasin</a></li>
+                        <li><Link to="/">Acceuil</Link></li>
+                        <li><Link to="store">Magasin</Link></li>
                     </ul>
                 </div>
                 <div className={styles.navright}>

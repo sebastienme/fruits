@@ -6,9 +6,10 @@ const Welcome = () => {
         <>
             <div className={styles.container}>
                 <div className={styles.title}>Bienvenue chez fruits.</div>
-                <p className={styles.sub_title}>Découvrez notre sélection de fruits frais, riches en saveurs et en vitalité. Livré directement de la ferme à votre table.</p>
+                <p className={styles.sub_title}>Découvrez notre sélection de sneakers et d'accessoires. Livraison gratuite pour une dépense de 100$ et plus. </p>
                 <Button
                     name='Achetez maintenant'
+                    to='store'
                 />
             </div>
         </>

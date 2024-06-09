@@ -1,9 +1,10 @@
 import styles from './Button.module.css'
+import { Link } from "react-router-dom";
 
 const Button = (props) => {
     return (
         <>
-            <a href={props.href} className={styles.btn}>{props.name}</a>
+            <Link to={props.to} className={styles.btn}>{props.name}</Link>
         </>
     )
 }
