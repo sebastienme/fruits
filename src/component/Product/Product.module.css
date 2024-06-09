@@ -1,3 +1,53 @@
-.big {
-    font-size: var(--h1-text);
+.container {
+    display: flex;
+    padding: 50px;
+}
+
+.image {
+    height: 460px;
+    width: 460px;
+}
+
+.image > img {
+    height: 250px;
+    width: auto;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 25px;
+}
+
+.title {
+    font-size: var(--h3-text);
+    font-weight: 700;
+}
+
+.stocks {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #1B9F00;
+    line-height: 1.25;
+}
+
+.cube {
+    width: 16px;
+    height: 16px;
+}
+
+.price {
+    font-weight: 700;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.buttons > a {
+    width: 220px;
 }
