@@ -3,6 +3,7 @@ import Card from '../Cards/Cards'
 import styles from './Store.module.css'
 import { shuffle } from 'fast-shuffle'
 import { Link } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
 const useProducts = () => {
     const [data, setData] = useState(null);
@@ -43,19 +44,19 @@ const Store = () => {
         <>
             <div className={styles.store_title}>Produits<span>({itemCount})</span></div>
             <div className={styles.products}>
-            {shuffle(data.map((item) => (
-                <Link to={`${item.id}`} key={item.id}>
-                    <Card
-                        key={item.id}
-                        image={item.image}
-                        title={item.title}
-                        category={item.category}
-                        price={item.price}
-                    />
-                </Link>
-            )))}   
+                {shuffle(data.map((item) => (
+                    <Link to={`${item.id}`} key={item.id}>
+                        <Card
+                            key={item.id}
+                            image={item.image}
+                            title={item.title}
+                            category={item.category}
+                            price={item.price}
+                        />
+                    </Link>
+                )))}   
             </div>
-            
+            <Outlet />
         </>
     )
 }
