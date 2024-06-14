@@ -1,6 +1,7 @@
 .icons {
     height: 30px;
     width: auto;
+    z-index: 999;
 }
 
 .search {

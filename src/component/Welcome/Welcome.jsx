@@ -6,7 +6,7 @@ const Welcome = () => {
         <>
             <div className={styles.container}>
                 <div className={styles.title}>Bienvenue chez fruits.</div>
-                <p className={styles.sub_title}>Découvrez notre sélection de sneakers et d'accessoires. Livraison gratuite pour une dépense de 100$ et plus. </p>
+                <p className={styles.sub_title}>Découvrez notre <span>fake</span> store développé avec fakestore API. 100% du du temps de développement n'a pas été mis dans le design.</p>
                 <Button
                     name='Achetez maintenant'
                     to='store'

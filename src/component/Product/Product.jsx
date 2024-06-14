@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import cube from '../../assets/cube.png'
 import { Button } from '../Button/Button';
+import NumberInput from './ProductComponents.jsx';
+import { useCart } from '../../Context.jsx';
 
 const useProduct = () => {
     const [data, setData] = useState(null);
@@ -28,7 +30,18 @@ const useProduct = () => {
 
 const Product = () => {
     const { data, error, loading } = useProduct();
-    const { productId } = useParams();
+    const [quantity, setQuantity] = useState(0);
+    const { addItemToCart } = useCart();
+
+    const handleAddToCart = () => {
+        addItemToCart({ ...data, quantity }); // Add the item to the cart with the selected quantity
+        setQuantity(0); // Reset the quantity input
+        console.log('ouiii')
+    };
+
+    useEffect(() => {
+        console.log(quantity)
+    }, [quantity]);
 
     useEffect(() => {
         if (data) {
@@ -38,7 +51,6 @@ const Product = () => {
 
     if (loading) return <p>Ça load...</p>;
     if (error) return <p>Une erreur réseau a été rencontrée</p>;
-
 
 
     return (
@@ -55,10 +67,14 @@ const Product = () => {
                     Disponible
                 </div>
                 <div className={styles.price}>{data.price}$</div>
-                <div> quantity</div>
+                <NumberInput
+                    value={quantity}
+                    min={0}
+                    onChange={(event, newValue) => setQuantity(newValue)}
+                />
                 <div>{data.description}</div>
                 <div className={styles.buttons}>
-                    <Button name='Achetez' />
+                    <Button name='Achetez' onClick={handleAddToCart} />
                     <Button name='Retirez du panier' />
                 </div>
             </div>

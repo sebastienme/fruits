@@ -14,7 +14,6 @@ const useProducts = () => {
     const [errorCat, setErrorCat] = useState(null);
     const [loading, setLoading] = useState(true);
     const [loadingCat, setLoadingCat] = useState(true);
-    const [categoryPick, setCategoryPick] = useState(null);
 
 
     /* TODO: faire un useEffect avec les filtres qui vient chercher les produits
@@ -54,16 +53,50 @@ const useProducts = () => {
 
 const Store = () => {
     const { data, error,loading, categories, errorCat, loadingCat } = useProducts();
+    const [filteredData, setFilteredData] = useState([]);
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [cart, setCart] = useState([]);
+
+    useEffect(() => {
+        if (data) {
+            setFilteredData(data);
+        }
+    }, [data]);
+
+    
+    useEffect(() => {
+        if (selectedCategories.length > 0) {
+            const newData = data.filter((item) => selectedCategories.includes(item.category));
+            setFilteredData(newData)
+        } else {
+            setFilteredData(data);
+        }
+
+    }, [selectedCategories, data])
+
+    const handleCategoryChange = (category) => {
+        setSelectedCategories((prevCategories) => {
+            if (prevCategories.includes(category)) {
+                return prevCategories.filter((cat) => cat !== category);
+            } else {
+                return [...prevCategories, category];
+            }
+        });
+    };
+
+    const addToCart = (item) => {
+        setCart((prevCart) => [...prevCart, item]);
+        console.log('add to cart dans le store')
+    } 
 
     if (loading) return <p>Ça load...</p>;
     if (error) return <p>Une erreur réseau a été rencontrée</p>;
 
     if (loadingCat) return <p>Les filtres load...</p>;
     if (errorCat) return <p>Une erreur réseau a été rencontrée</p>;
-
-    const itemCount = data ? data.length : 0;
-
     
+    const itemCount = filteredData ? filteredData.length : 0;
+
     return (
         <>
         <div className={styles.flex_container}>
@@ -71,8 +104,15 @@ const Store = () => {
                 <div className={styles.filter_title}>Filtre</div>
                 <div className={styles.filter_items}>
                     <FormGroup>
-                        {categories.map((item) => (
-                            <a key={item}><FormControlLabel control={<Checkbox />} label={item}/></a>
+                        {categories && categories.map((item) => (
+                            <a key={item}>
+                                <FormControlLabel
+                                    control={<Checkbox />}
+                                    label={item}
+                                    checked={selectedCategories.includes(item)}
+                                    onChange={() => handleCategoryChange(item)}
+                                />
+                            </a>
                         ))}
                     </FormGroup>
                 </div>
@@ -80,7 +120,7 @@ const Store = () => {
             <div className={styles.right_container}>
                 <div className={styles.store_title}>Produits <span>({itemCount})</span></div>
                 <div className={styles.products}>
-                    {shuffle(data.map((item) => (
+                    {filteredData && shuffle(filteredData.map((item) => (
                         <Link to={`${item.id}`} key={item.id}>
                             <Card
                                 key={item.id}
@@ -88,6 +128,7 @@ const Store = () => {
                                 title={item.title}
                                 category={item.category}
                                 price={item.price}
+                                addToCart={() => addToCart(item)}
                             />
                         </Link>
                     )))}   
