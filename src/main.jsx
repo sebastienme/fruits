@@ -6,6 +6,7 @@ import './index.css'
 import Store from './component/Store/Store';
 import Welcome from './component/Welcome/Welcome';
 import Product from './component/Product/Product';
+import ShoppingCart from './component/ShoppingCart/ShoppingCart';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "store/:productId",
         element: <Product />,
+      },
+      {
+        path: "cart",
+        element: <ShoppingCart />
       }
     ]
   },

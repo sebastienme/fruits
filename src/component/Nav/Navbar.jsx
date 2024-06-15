@@ -10,8 +10,6 @@ const Navbar = () => {
 
     useEffect(() => {
         setCartQty(cart.length)
-        console.log('nav')
-        console.log(cart)
     }, [cart])
 
     return (
@@ -33,7 +31,7 @@ const Navbar = () => {
                         </form>
                     </div>
                     <ul className={styles.icons}>
-                        <li><Bag qty={cartQty} /></li>
+                        <li><Link to="cart"><Bag qty={cartQty} /></Link></li>
                     </ul>
                 </div>
             </nav>

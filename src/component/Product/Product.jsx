@@ -34,8 +34,10 @@ const Product = () => {
     const { addItemToCart } = useCart();
 
     const handleAddToCart = () => {
-        addItemToCart({ ...data, quantity }); // Add the item to the cart with the selected quantity
-        setQuantity(0); // Reset the quantity input
+        if (quantity > 0) {
+            addItemToCart({ ...data, quantity }); // Add the item to the cart with the selected quantity
+            setQuantity(0); // Reset the quantity input
+        }
     };
 
 
@@ -65,7 +67,6 @@ const Product = () => {
                 <div>{data.description}</div>
                 <div className={styles.buttons}>
                     <Button name='Ajoutez au panier' onClick={handleAddToCart} />
-                    <Button name='Retirez du panier' />
                 </div>
             </div>
         </div>
