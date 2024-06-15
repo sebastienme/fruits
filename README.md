@@ -1,3 +1,3 @@
 # React + Vite
 
-Small Reach shopping cart webapp.
+Small React shopping cart webapp.
