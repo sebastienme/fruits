@@ -12,6 +12,10 @@ const Navbar = () => {
         setCartQty(cart.length)
     }, [cart])
 
+    const handleSubmit = (event) => {
+        event.preventDefault(); // Prevent the form from submitting
+    };
+
     return (
         <>
             <nav className={styles.navbar}>
@@ -25,7 +29,7 @@ const Navbar = () => {
                 <div className={styles.navright}>
                     <div className={styles.searchbar}>
                         <Search />
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <input className={styles.input} type="text" placeholder='Recherche' />
                             <input className={styles.none} type="submit"></input>
                         </form>
