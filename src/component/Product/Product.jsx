@@ -36,18 +36,8 @@ const Product = () => {
     const handleAddToCart = () => {
         addItemToCart({ ...data, quantity }); // Add the item to the cart with the selected quantity
         setQuantity(0); // Reset the quantity input
-        console.log('ouiii')
     };
 
-    useEffect(() => {
-        console.log(quantity)
-    }, [quantity]);
-
-    useEffect(() => {
-        if (data) {
-          console.log(data);
-        }
-    }, [data]);
 
     if (loading) return <p>Ça load...</p>;
     if (error) return <p>Une erreur réseau a été rencontrée</p>;
@@ -74,7 +64,7 @@ const Product = () => {
                 />
                 <div>{data.description}</div>
                 <div className={styles.buttons}>
-                    <Button name='Achetez' onClick={handleAddToCart} />
+                    <Button name='Ajoutez au panier' onClick={handleAddToCart} />
                     <Button name='Retirez du panier' />
                 </div>
             </div>

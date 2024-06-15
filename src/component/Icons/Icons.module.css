@@ -2,6 +2,19 @@
     height: 30px;
     width: auto;
     z-index: 999;
+    display: block;
+}
+
+.flex_container {
+    position: relative;
+    display: flex; /* Ensures the container shrinks to the size of the content */
+}
+
+.cart_qty {
+    position: absolute;
+    top: 12px;
+    right: 11px;
+    font-size: var(--small-text);
 }
 
 .search {

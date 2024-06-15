@@ -1,8 +1,19 @@
 import styles from './Navbar.module.css'
 import { Bag, Heart, Search } from '../Icons/Icons';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../Context.jsx';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
+    const { cart } = useCart();
+    const [cartQty, setCartQty] = useState(0);
+
+    useEffect(() => {
+        setCartQty(cart.length)
+        console.log('nav')
+        console.log(cart)
+    }, [cart])
+
     return (
         <>
             <nav className={styles.navbar}>
@@ -22,8 +33,7 @@ const Navbar = () => {
                         </form>
                     </div>
                     <ul className={styles.icons}>
-                        <li><Bag /></li>
-                        <li><Heart /></li>
+                        <li><Bag qty={cartQty} /></li>
                     </ul>
                 </div>
             </nav>

@@ -11,7 +11,19 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
     const addItemToCart = (item) => {
-        setCart([...cart, item]);
+        setCart((prevCart) => {
+            const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
+
+            if (existingItem) {
+                return prevCart.map(cartItem => 
+                    cartItem.id === item.id
+                        ?{ ...cartItem, quantity: cartItem.quantity + item.quantity }
+                        : cartItem
+                );
+            } else {
+                return [...prevCart, { ...item, quantity: item.quantity }];
+            }
+        });
     };
 
     const removeItemFromCart = (itemId) => {
@@ -25,11 +37,6 @@ export const CartProvider = ({ children }) => {
     const clearCart = () => {
         setCart([]);
     };
-
-    useEffect(() => {
-        console.log('cart is: ')
-        console.log(cart)
-    }, [cart])
 
     return (
         <CartContext.Provider

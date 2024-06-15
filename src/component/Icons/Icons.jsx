@@ -3,10 +3,13 @@ import heart from '../../assets/heart.svg'
 import search from '../../assets/search.svg'
 import styles from './Icons.module.css'
 
-const Bag = () => {
+const Bag = (props) => {
     return (
         <>
-            <img src={bag} className={styles.icons} alt="bag-icon" />
+            <div className={styles.flex_container}>
+                <img src={bag} className={styles.icons} alt="bag-icon" />
+                <span className={styles.cart_qty}>{props.qty}</span>
+            </div>
         </>
     )
 }

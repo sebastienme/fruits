@@ -5,7 +5,6 @@ const Card = (props) => {
     const handleBagClick = (event) => {
         event.stopPropagation();
         props.addToCart;
-        console.log('avant add to cart')
     };
 
     return (
